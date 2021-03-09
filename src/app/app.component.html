@@ -1,28 +1,28 @@
-<!DOCTYPE html>
-
-    <head>
-        <title>{{title}}</title>
-
-    </head>
-    <body>
-        Hello From App Component
-
-        <div class="container">
-
-          <div class="app"> 
-              <div class="input-single">
-                  <textarea id="note-textarea" placeholder="Say Something" rows="6"></textarea>
-              </div>         
-              <button id="start-record-btn" title="Start Recording">Start Recognition</button>
-              <button id="pause-record-btn" title="Pause Recording">Pause Recognition</button>
-              <p id="recording-instructions">Press the <strong>Start Recognition</strong></p>
-              
-
-          </div>
-
-      </div>
-        
-    </body>
-
-
-
+<div *ngIf="voiceActiveSectionDisabled; else voicesection;">
+    <button type="button" (click)="startVoiceRecognition()">Record</button>
+  </div>
+  <ng-template #voicesection>
+    <ng-container *ngIf="!voiceActiveSectionError; else failure">
+      <ng-container *ngIf="voiceText; else start">
+          <span>{{voiceText}}</span>
+      </ng-container>
+      <ng-template #start>
+        <ng-container
+          *ngIf="voiceActiveSectionListening; else beginning">
+          <span>Listening...</span>
+        </ng-container>
+        <ng-template #beginning>
+          <span>Start talking...</span>
+        </ng-template>
+      </ng-template>
+    </ng-container>
+    <ng-template #failure>
+      <span>Didn't catch that</span>
+    </ng-template>
+    <div>
+      <button (click)="closeVoiceRecognition()">Close</button>
+      <button (click)="startVoiceRecognition()">Restart</button>
+    </div>
+    
+  </ng-template>
+  <div> Value of voice : {{voiceText}}</div>

@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -91,11 +92,11 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css"
             ],
             "scripts": [
-              "src/script.js",
-              "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+              "src/annyang.min.js"
             ]
           }
         },
